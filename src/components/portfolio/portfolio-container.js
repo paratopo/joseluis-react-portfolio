@@ -28,7 +28,7 @@ export default class PortfolioContainer extends Component {
       .then(response => {
         console.log("datos API", response);
         this.setState({
-            data: response.data.portfolioItems
+            data: response.data.portfolio_items
         });
       })
       .catch(error => {
@@ -44,7 +44,7 @@ export default class PortfolioContainer extends Component {
 
         return this.state.data.map(item => {
             console.log("item API", item);
-            return <PortfolioItem title={item.name} url={item.url} permalink={item.id} />;
+            return (<PortfolioItem key={item.id} title={item.name} url={item.url} permalink={item.id} />);
         });
     }
 
@@ -59,8 +59,8 @@ export default class PortfolioContainer extends Component {
                 <br/>
                 <hr/>
                 <br/>
-                <button onClick={() => this.handleFilter("Comercio")}>Empresas Comerciales</button>
-                <button onClick={() => this.handleFilter("Gestoria")}>Empresas Gestoras</button>
+                <button onClick={() => this.handleFilter("comercio")}>Empresas Comerciales</button>
+                <button onClick={() => this.handleFilter("gestoria")}>Empresas Gestoras</button>
                 <br/>
                 {this.portfolioItems()}
 
