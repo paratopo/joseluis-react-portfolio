@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import PortfolioItem from './portfolio-item.js';
 export default class PortfolioContainer extends Component {
     constructor() {
         super();
-        
+
         this.state = {
-            pageTitle : "Bienvenido a mi Portfolio",
+            pageTitle: "Bienvenido a mi Portfolio",
             isLoading: false,
-            data : [
-                {title : "empresa 1", category : "Comercio", permalink : "empresa_1"},
-                {title : "empresa 2", category : "Gestoria", permalink : "empresa_2"},
-                {title : "empresa 3", category : "Comercio", permalink : "empresa_3"},
-                {title : "empresa 4", category : "Gestoria", permalink : "empresa_4"}
-            ]
+            data: []
         };
 
         this.handleFilter = this.handleFilter.bind(this);
@@ -27,10 +23,28 @@ export default class PortfolioContainer extends Component {
         })
     }
 
+    getPortfolioItems() {
+        axios.get('https://joseluis.devcamp.space/portfolio/portfolio_items')
+      .then(response => {
+        console.log("datos API", response);
+        this.setState({
+            data: response.data.portfolioItems
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
+
+    componentDidMount() {
+        this.getPortfolioItems();
+    }
+
     portfolioItems() {
 
-        return this.state.data.map(empresa => {
-            return <PortfolioItem title={empresa.title} url="xxx.com" permalink={empresa.permalink} />;
+        return this.state.data.map(item => {
+            console.log("item API", item);
+            return <PortfolioItem title={item.name} url={item.url} permalink={item.id} />;
         });
     }
 

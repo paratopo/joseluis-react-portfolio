@@ -14,11 +14,11 @@ import NoMatch from './pages/no-match.js';
 
 export default class App extends Component {
   constructor() {
-    super();
-
+    super();  
   }
-  
+
   render() {
+
     return (
       <div className='app'>
         <h1>JoseLuis React Portfolio</h1>
