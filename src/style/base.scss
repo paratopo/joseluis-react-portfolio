@@ -1,0 +1,23 @@
+body {
+    margin: 0px;
+    font-family: "Titillium Web", sans-serif;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.app .header-portfolio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Electrolize", sans-serif;
+}
+.header-portfolio 
+    h1,h3 {
+        padding: 0px;
+        margin: 0px;
+    }
+.header-portfolio .header-date {
+    font-family: "Roboto Mono", sans-serif;
+}

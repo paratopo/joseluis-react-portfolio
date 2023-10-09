@@ -20,12 +20,12 @@ export default class App extends Component {
   render() {
 
     return (
-      <div className='app'>
-        <h1>JoseLuis React Portfolio</h1>
-        <h3>React Redux Router</h3>
-
-        <div>
-          {moment().format("dddd, D MMMM YYYY, h:mm a")}
+      <div className='container'>
+        <div className='header-portfolio'>
+          <h1>JoseLuis React Portfolio</h1>
+          <div className='header-date'>
+            {moment().format("dddd, D MMMM YYYY, h:mm a")}
+          </div>
         </div>
 
         <Router>

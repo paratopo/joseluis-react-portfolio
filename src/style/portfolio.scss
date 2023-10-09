@@ -1,0 +1,44 @@
+.portfolio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+
+    .portfolio-item {
+        position: relative;
+    }
+        .portfolio-background {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+        }
+        .logo-description {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 0px 50px;
+
+            .description {
+                transition: 1s ease-in-out;
+                color: transparent;
+            }
+        }
+        .logo-description:hover .description {
+            color: $teal;
+            font-weight: 400;
+        }
+        .logo img {
+            width: 50%;
+            margin: 10px;
+        }
+}
+.image-blur {
+    transition: 1s;
+    filter: brightness(10%);
+}
