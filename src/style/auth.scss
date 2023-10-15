@@ -1,0 +1,16 @@
+.auth-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 160px);
+
+    .left-side {
+        background-size: cover;
+    }
+
+    .right-side {
+        background-color: $offwhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
