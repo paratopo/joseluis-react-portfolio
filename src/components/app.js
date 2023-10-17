@@ -10,6 +10,7 @@ import Home from './pages/home.js';
 import Blog from './pages/blog.js';
 import About from './pages/about.js';
 import Contact from './pages/contact.js';
+import PortfolioManager from './pages/portfolio-manager.js';
 import Auth from './pages/auth.js';
 import NoMatch from './pages/no-match.js';
 
@@ -74,8 +75,7 @@ export default class App extends Component {
     this.checkLoginStatus();
   }
   authorizedPages() {
-    return 
-      <Route path='/blog' component={ Blog } />
+    return <Route exact path='/portfolio-manager' component={ PortfolioManager } />
   }
 
   render() {
@@ -103,10 +103,11 @@ export default class App extends Component {
                     handleUnSuccessfulLogin= {this.handleUnSuccessfulLogin} 
                     />
               )} />
-              {this.state.loggedInStatus ? (this.authorizedPages()) : null}
+              <Route path='/blog' component={ Blog } />
               <Route exact path='/portfolio/:permalink' component={ PortfolioDetail } />
               <Route path='/about' component={ About } />
-              <Route path='/contact' component={ Contact } /> 
+              <Route path='/contact' component={ Contact } />
+              {this.state.loggedInStatus ? (this.authorizedPages()) : null}
               <Route component={ NoMatch } /> 
             </Switch>
         </Router>
