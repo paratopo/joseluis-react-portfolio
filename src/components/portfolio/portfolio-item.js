@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default class PortfolioItem extends Component {
     constructor(props) {
@@ -9,10 +8,7 @@ export default class PortfolioItem extends Component {
             portfolioItemClass: ""
         };
     }
-        //background: thumb_image_url
-        //logo: logo_url
-        //description: description
-        //id: id
+
     handleMouseEnter() {
         this.setState({portfolioItemClass: "image-blur"})
     }

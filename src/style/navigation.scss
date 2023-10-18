@@ -7,6 +7,17 @@
         display: flex;
     }
 
+    .right-side {
+        a {
+            margin-left: 10px;
+            cursor: pointer;
+            color: $teal;
+            &:hover {
+                color: $warning;
+            }
+        }
+    }
+
     .nav-link {
         height: 22px;
         margin: 0px 5px;
