@@ -33,7 +33,30 @@ export default class PortfolioForm extends Component {
         this.logoRef= React.createRef();
     }
 
-    
+    componentDidUpdate() {
+        if (Object.keys(this.props.portfolioToEdit).length > 0) {
+            const {
+                id,
+                name,
+                description,
+                category,
+                position,
+                url, 
+                thumb_image_url,
+                banner_image_url, 
+                logo_url
+            }= this.props.portfolioToEdit;
+            this.props.clearPortfolioToEdit();
+            this.state= {
+                id: id,
+                name: name || "",
+                description: description || "",
+                category: category || "comercio",
+                position: position || "",
+                url: url || "",
+            }
+        }
+    }
 
     handleThumbDrop() {
         return {
@@ -99,11 +122,14 @@ export default class PortfolioForm extends Component {
     }
 
     handleSubmit(event) {
+        console.log("submit event", event)
+       
         axios
           .post(
             "https://joseluis.devcamp.space/portfolio/portfolio_items",
             this.buildForm(), {withCredentials: true})
           .then(response => {
+            console.log("response data", response)
             this.props.handleSucessfulFormSubmission(response.data.portfolio_item);
 
             this.setState({
@@ -181,6 +207,8 @@ export default class PortfolioForm extends Component {
                         eventHandlers= {this.handleThumbDrop()}>
                             <div className='dz-message'>THUMBNAIL</div>
                         </DropzoneComponent>
+
+
                         <DropzoneComponent 
                         ref= {this.bannerRef}
                         config= {this.componentConfig()} 
@@ -188,6 +216,8 @@ export default class PortfolioForm extends Component {
                         eventHandlers= {this.handleBannerDrop()}>
                             <div className='dz-message'>BANNER</div>
                         </DropzoneComponent>
+
+
                         <DropzoneComponent 
                         ref= {this.logoRef}
                         config= {this.componentConfig()} 
@@ -195,6 +225,8 @@ export default class PortfolioForm extends Component {
                         eventHandlers= {this.handleLogoDrop()}>
                             <div className='dz-message'>LOGO</div>
                         </DropzoneComponent>
+
+                        
                     </div>
                     <div>
                         <button className='btn' type='submit'>GUARDAR</button>

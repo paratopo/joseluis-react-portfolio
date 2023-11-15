@@ -40,7 +40,8 @@ export default class PortfolioManager extends Component {
     handleEditItem(portfolioItem) {
         this.setState({
             portfolioToEdit: portfolioItem
-        })
+        });
+        console.log(portfolioToEdit)
     }
 
     handleDeleteItem(portfolioItem) {
@@ -92,9 +93,10 @@ export default class PortfolioManager extends Component {
                 
                 <div className='right-side'>
                     <PortfolioSidebar 
-                    handleDeleteItem= {this.handleDeleteItem} 
-                    data={this.state.portfolioItems}
-                    handleEditItem= {this.handleEditItem} />
+                        handleDeleteItem= {this.handleDeleteItem} 
+                        data={this.state.portfolioItems}
+                        handleEditItem= {this.handleEditItem}
+                     />
                 </div>
             </div>
         );
